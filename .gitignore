@@ -1,0 +1,10 @@
+.project
+.settings
+.actionScriptProperties
+.flexProperties
+.DS_Store
+.svn
+Main.swf
+tempViewerHTML.html
+*.as3proj
+
