@@ -1,16 +1,16 @@
 ﻿package
 {
-	import flash.utils.getTimer;
-	import signalscircuit.TestSignalCommand;
-	import org.puremvc.as3.core.SignalsCircuit;
-	import puremvc.TestCommand;
-	import org.puremvc.as3.patterns.facade.Facade;
 	import com.gskinner.performance.MethodTest;
 	import com.gskinner.performance.TestSuite;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
+	import flash.utils.getTimer;
 	import org.osflash.signals.DeluxeSignal;
 	import org.osflash.signals.Signal;
+	import org.puremvc.as3.patterns.facade.Facade;
+	import org.signalscircuit.SignalsCircuit;
+	import puremvc.TestCommand;
+	import signalscircuit.TestSignalCommand;
 	
 	/**
 	 * ...

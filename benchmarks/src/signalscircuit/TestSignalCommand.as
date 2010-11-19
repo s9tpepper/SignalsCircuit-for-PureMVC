@@ -1,7 +1,7 @@
 package signalscircuit
 {
 	import org.osflash.signals.Signal;
-	import org.puremvc.as3.patterns.command.SimpleSignalCommand;
+	import org.signalscircuit.puremvc.as3.patterns.command.SimpleSignalCommand;
 
 	/**
 	 * @author Omar Gonzalez
