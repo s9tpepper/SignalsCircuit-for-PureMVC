@@ -108,10 +108,10 @@ package org.signalscircuit
 		 * 
 		 * @return the Singleton instance of <code>SignalsCircuit</code>
 		 */
-		public static function getInstance() : ISignalsCircuit
+		public static function getInstance() : SignalsCircuit
 		{
 			if (instance == null) instance = new SignalsCircuit();
-			return instance;
+			return instance as SignalsCircuit;
 		}
 	}
 }
