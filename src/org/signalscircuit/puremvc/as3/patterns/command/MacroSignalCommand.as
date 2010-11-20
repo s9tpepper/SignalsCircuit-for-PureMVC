@@ -13,11 +13,11 @@ package org.signalscircuit.puremvc.as3.patterns.command
 		/**
 		 * Vector of ISignalCommand objects set as sub commands to this MacroSignalCommand.
 		 */
-		private var _subCommands:Vector.<ISignalCommand>;
+		private var _subCommands:Array;
 		
 		public function MacroSignalCommand()
 		{
-			_subCommands = new Vector.<ISignalCommand>();
+			_subCommands = new Array();
 			initializeMacroCommand();
 		}
 		/**
