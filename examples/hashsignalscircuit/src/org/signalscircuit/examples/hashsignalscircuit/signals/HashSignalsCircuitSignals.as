@@ -17,7 +17,5 @@ package org.signalscircuit.examples.hashsignalscircuit.signals
 		 * Signal dispatched to start the application.
 		 */
 		static public const START_APPLICATION:Signal = new Signal(HashSignalsCircuitView);
-		
-		
 	}
 }

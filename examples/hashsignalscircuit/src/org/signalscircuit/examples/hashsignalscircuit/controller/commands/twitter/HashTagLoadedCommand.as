@@ -18,8 +18,14 @@ package org.signalscircuit.examples.hashsignalscircuit.controller.commands.twitt
 			var json:JSON = args[0];
 			var results:Array = json.results.valueOf();
 
-			var hashSignalsCircuitMediator:HashSignalsCircuitMediator = facade.retrieveMediator(HashSignalsCircuitMediator.NAME) as HashSignalsCircuitMediator;
-			hashSignalsCircuitMediator.setDisplay(results);
+			//var hashSignalsCircuitMediator:HashSignalsCircuitMediator = facade.retrieveMediator(HashSignalsCircuitMediator.NAME) as HashSignalsCircuitMediator;
+			
+			//var hashSignalsCircuitMediator:HashSignalsCircuitMediator = getMediator(HashSignalsCircuitMediator.NAME);
+			
+			var hsm:HashSignalsCircuitMediator = gm(HashSignalsCircuitMediator.NAME);
+			
+			
+			hsm.setDisplay(results);
 		}
 	}
 }

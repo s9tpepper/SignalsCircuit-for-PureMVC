@@ -87,7 +87,7 @@
 				signal1.dispatch();
 			}
 
-			signalCircuit.removeCommand(signal1);
+//			signalCircuit.removeCommand(signal1);
 		}
 		
 		private function signalDispatch(...args):void {

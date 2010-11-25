@@ -76,6 +76,27 @@ package org.signalscircuit.puremvc.as3.patterns.observer
 		 public function compareNotifyContext( object:Object ):Boolean
 		 {
 		 	return object === this._context;
-		 }	
+		}
+		/**
+		 * Destroys the SignalObserver object.
+		 */
+		public function destroy():void
+		{
+			if (_signal)
+			{
+				_signal.remove(_signalWatcher);
+			}
+
+			_context = null;
+			_notify = null;
+			_signal = null;
+		}
+		/**
+		 * Returns the Signal object associated with this SignalObserver instance.
+		 */
+		public function get signal():Signal
+		{
+			return _signal;
+		}
 	}
 }

@@ -1,14 +1,12 @@
 package org.signalscircuit.puremvc.as3.patterns.command
 {
 	import org.osflash.signals.Signal;
-	import org.puremvc.as3.interfaces.INotifier;
-	import org.puremvc.as3.patterns.observer.Notifier;
 	import org.signalscircuit.puremvc.as3.interfaces.ISignalCommand;
 
 	/**
 	 * @author Omar Gonzalez
 	 */
-	public class MacroSignalCommand extends Notifier implements ISignalCommand, INotifier
+	public class MacroSignalCommand extends SimpleSignalCommand
 	{
 		/**
 		 * Vector of ISignalCommand objects set as sub commands to this MacroSignalCommand.
@@ -55,8 +53,9 @@ package org.signalscircuit.puremvc.as3.patterns.command
 		 * order.</P>
 		 * 
 		 * @param commandClassRef a reference to the <code>Class</code> of the <code>ISignalCommand</code>.
+		 * @param cached A Boolean flag to set whether the command is pre-instantiated.
 		 */
-		protected function addSubCommand( commandClassRef:Class, cached:Boolean=true ): void
+		protected function addSubCommand(commandClassRef:Class, cached:Boolean=true):void
 		{
 			if (cached)
 			{
@@ -67,16 +66,16 @@ package org.signalscircuit.puremvc.as3.patterns.command
 				_subCommands.push(commandClassRef);
 			}
 		}
-		
 		/** 
 		 * @inheritDoc
 		 */
-		public final function execute( signal:Signal, args:Array ) : void
+		final override public function execute(signal:Signal, args:Array):void
 		{
-			while ( _subCommands.length > 0) {
-				var commandClassRef : * = _subCommands.shift();
-				var commandInstance : ISignalCommand = (commandClassRef is Class) ? new commandClassRef() : commandClassRef;
-				commandInstance.execute( signal, args );
+			while ( _subCommands.length > 0)
+			{
+				var commandClassRef:*				= _subCommands.shift();
+				var commandInstance:ISignalCommand	= (commandClassRef is Class) ? new commandClassRef() : commandClassRef;
+				commandInstance.execute(signal, args);
 			}
 		}
 	}

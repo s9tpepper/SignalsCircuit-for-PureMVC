@@ -30,6 +30,10 @@ package org.signalscircuit
 		 * @param Signal to remove the <code>ISignalCommand</code> mapping for
 		 */
 		function removeCommand( signal:Signal ):void;
-
+		
+		/**
+		 * Checks if the Signal has been registered with an ISignalCommand object.
+		 */
+		function hasSignalCommand( signal:Signal ):Boolean;
 	}
 }
