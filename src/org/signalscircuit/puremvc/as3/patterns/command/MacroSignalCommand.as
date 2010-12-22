@@ -44,7 +44,6 @@ package org.signalscircuit.puremvc.as3.patterns.command
 		protected function initializeMacroCommand():void
 		{
 		}
-		
 		/**
 		 * Add a <i>SubCommand</i>.
 		 * 

@@ -8,9 +8,8 @@ package org.signalscircuit.puremvc.as3.patterns.observer
 	 */
 	public class SignalObserver
 	{
-		private var _notify:Function;
-		private var _context:SignalsCircuit;
-		private var _signal:Signal;
+		protected var _signalsCircuit:SignalsCircuit;
+		protected var _signal:Signal;
 		
 		/**
 		 * @Constructor
@@ -19,10 +18,9 @@ package org.signalscircuit.puremvc.as3.patterns.observer
 		 * @param notifyMethod Function callback to notify/invoke.
 		 * @param notifyContext Object on which the function callback exists.
 		 */
-		public function SignalObserver(signal:Signal, notifyMethod:Function, notifyContext:SignalsCircuit)
+		public function SignalObserver(signal:Signal, signalsCircuit:SignalsCircuit)
 		{
-			_notify = notifyMethod;
-			_context = notifyContext;
+			_signalsCircuit = signalsCircuit;
 			
 			_initSignal(signal);
 		}
@@ -38,34 +36,21 @@ package org.signalscircuit.puremvc.as3.patterns.observer
 		}
 		/**
 		 * The method that watches for dispatches from the signal, notifies
-		 * the observers.
+		 * the observers.  Had to refactor to take multiple optional variables
+		 * to be able to have a single callback that should support the majority
+		 * of Signal object usage.
 		 * 
-		 * @param firstArg
-		 * @param rest
 		 */
-		private function _signalWatcher(firstArg:*=null, ... rest):void
+		private function _signalWatcher(a:*=null, b:*=null, c:*=null, d:*=null, e:*=null, f:*=null, g:*=null, h:*=null, i:*=null, j:*=null, k:*=null, l:*=null, m:*=null, n:*=null, o:*=null):void
 		{
-			switch (true)
-			{
-				case (firstArg == null):
-					_signalObservers(_signal, null);
-					break;
-				case (firstArg && !rest):
-					_signalObservers(_signal, [firstArg]);
-					break;
-					
-				default:
-					rest.unshift(firstArg);
-					_signalObservers(_signal, rest);
-					break;
-			}
+			signalObservers(_signal, arguments);
 		}
 		/**
 		 * Sends the signal to all observers of this Signal object dispatches.
 		 */
-		private function _signalObservers(signal:Signal, args:Array):void
+		protected function signalObservers(signal:Signal, args:Array):void
 		{
-			_context.executeSignalCommand(signal, args);
+			_signalsCircuit.executeSignalCommand(signal, args);
 		}
 		/**
 		 * Compare an object to the notification context. 
@@ -75,7 +60,7 @@ package org.signalscircuit.puremvc.as3.patterns.observer
 		 */
 		 public function compareNotifyContext( object:Object ):Boolean
 		 {
-		 	return object === this._context;
+		 	return object === _signalsCircuit;
 		}
 		/**
 		 * Destroys the SignalObserver object.
@@ -87,8 +72,7 @@ package org.signalscircuit.puremvc.as3.patterns.observer
 				_signal.remove(_signalWatcher);
 			}
 
-			_context = null;
-			_notify = null;
+			_signalsCircuit = null;
 			_signal = null;
 		}
 		/**

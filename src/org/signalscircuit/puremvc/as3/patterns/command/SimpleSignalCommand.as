@@ -30,7 +30,7 @@ package org.signalscircuit.puremvc.as3.patterns.command
 			return facade.retrieveProxy(proxyName);
 		}
 		/**
-		 * See <code>getProxy()</code>.
+		 * Short hand for <code>getProxy()</code>.
 		 */
 		protected function gp(proxyName:String):*
 		{
@@ -50,7 +50,7 @@ package org.signalscircuit.puremvc.as3.patterns.command
 			return facade.retrieveMediator(mediatorName);
 		}
 		/**
-		 * See <code>getMediator()</code>.
+		 * Short hand for <code>getMediator()</code>.
 		 */
 		protected function gm(mediatorName:String):*
 		{
